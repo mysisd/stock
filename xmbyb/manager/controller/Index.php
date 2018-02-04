@@ -111,15 +111,15 @@ class Index  extends Controller{
       $json=curl_exec($curl);
        $json=json_decode($json, true);
        $arr=array_keys($json['data']['sort']);
-     dump($arr);
      for($i=1;$i<count($arr);$i++){
          $data=array();
          $res=$arr[$i];
          $row['sort']=$res;
          $data=array_combine($json['data']['sort']['fields'],$json['data']['sort']["$res"]);
          $data['sort']=$res;
-         dump($data);
-         Db('stock')->strict(false)->insert($data);
+
+        Db('stock')->strict(false)->insert($data);
+
      }
 
    }
@@ -129,7 +129,7 @@ class Index  extends Controller{
         $method = "GET";
         $appcode = "f7a39b2b7c2a4fb7b1b6117b9a4022f1 ";
         $querys = "data_count=100&en_hq_type_code=SS.ESA&fields=fields&sort_field_name=px_change_rate&sort_type=0&start_pos=start_pos";
-        $this->api51_curl($host,$path,$method,$appcode,$querys);
+        dump($this->api51_curl($host,$path,$method,$appcode,$querys));
     }
 
 
