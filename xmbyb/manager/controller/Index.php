@@ -131,6 +131,27 @@ class Index  extends Controller{
         $querys = "data_count=100&en_hq_type_code=SS.ESA&fields=fields&sort_field_name=px_change_rate&sort_type=0&start_pos=start_pos";
         dump($this->api51_curl($host,$path,$method,$appcode,$querys));
     }
+    public function TradeAccount(){
+        echo $this->fetch();
+    }
+    public function SysUser(){
+        echo $this->fetch();
+    }
+    public function SysRole(){
+        echo $this->fetch();
+    }
+    public function SysDeptment(){
+        echo $this->fetch();
+    }
+    public function SysStation(){
+        echo $this->fetch();
+    }
+    public function index1(){
+        echo $this->fetch();
+    }
+    public function Create(){
+        echo $this->fetch();
+    }
 
 
 }

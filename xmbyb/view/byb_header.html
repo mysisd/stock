@@ -1,24 +1,31 @@
 <!--头部导航栏-->
+<div id="inner-loading" style="display:none;">
+    <div style="height:100%;width:100%; text-align:center; vertical-align:middle; padding-top:70px;padding-bottom:70px;">
+        <img src="/Public/images/loading1.gif"><br>
+        加载中...
+    </div>
+</div>
+
 <div class="head">
     <div class="">
         <div class="logo"><img src="/Public/images/logo(1).png"></div>
         <ul id="navs" class="navs clearfix">
             <li class="nLi on it">
-                <span><a name="taburl" alt-id="/Manager/%23/%23" alt-url="/Manager/%23/%23">组织机构管理<span class="arrows"></span></a></span>
+                <span><a id="p1" name="taburl" target='myFrameName' href="/Manager/index/index1">组织机构管理<span class="arrows"></span></a></span>
                 <ul class="sub">
-                    <li><a name="taburl" alt-id="/Manager/%23/%23" alt-url="/Manager/%23/%23">机构信息管理</a></li>
-                    <li><a name="taburl" alt-id="/Manager/SysDeptment" alt-url="/Manager/SysDeptment">部门管理</a></li>
-                    <li><a name="taburl" alt-id="/Manager/SysStation" alt-url="/Manager/SysStation">岗位管理</a></li>
+                    <li><a name="taburl" target='myFrameName'  href="/Manager/index/index1">机构信息管理</a></li>
+                    <li><a name="taburl" target='myFrameName'  href="/Manager/index/SysDeptment">部门管理</a></li>
+                    <li><a name="taburl"  target='myFrameName' href="/Manager/index/SysStation">岗位管理</a></li>
                 </ul>
             </li>
             <li class="nLi">
-                <span><a name="taburl" alt-id="/Manager/TradeAccount" alt-url="/Manager/TradeAccount">交易账户管理</a></span>
+                <span><a name="taburl" target='myFrameName' href="/Manager/index/TradeAccount">交易账户管理</a></span>
             </li>
             <li class="nLi">
-                <span><a name="taburl" alt-id="/Manager/SysUser" alt-url="/Manager/SysUser">用户管理</a></span>
+                <span><a name="taburl" target='myFrameName'  href="/Manager/index/SysUser">用户管理</a></span>
             </li>
             <li class="nLi ">
-                <span><a name="taburl" alt-id="/Manager/SysRole" alt-url="/Manager/SysRole">权限管理</a></span>
+                <span><a name="taburl" target='myFrameName'  href="/Manager/index/SysRole">权限管理</a></span>
             </li>
             <div class="fr">
                 <li class="nLi">
@@ -28,66 +35,39 @@
                     </ul>
                 </li>
                 <li class="nLi">
-                    <span><a href="#" onclick="Logout()"><i class="tc"></i>退出</a></span>
+                    <span><a><i class="tc"></i>退出</a></span>
                 </li>
             </div>
         </ul>
 
     </div>
 </div>
+
 <div class="tab-top nav nav-tabs" id="maintab">
     <ul>
-        <li class="" >
-            <a href="">首页<span></span></a>
+        <li class="cur"  >
+            <a href="/Manager/index/index1" target="myFrameName">首页<span></span></a>
         </li>
-        <li  class=""><a href="">交易账户管理<span class="top-close" ></span></a></li><li class="cur active"><a href="">用户管理<span class="top-close" ></span></a></li><li  class=""><a href="">权限管理<span class="top-close" ></span></a></li></ul>
+    </ul>
 </div>
+<!--<div id="mousediv" class="top-right-con">-->
+    <!--<i id="refresh" onclick="Refresh(this)" alt-id="">刷新当前</i>-->
+    <!--<i id="closeother" onclick="CloseOther(this)" alt-id="">关闭其他</i>-->
+    <!--<i onclick="CloseAll()">关闭全部</i>-->
+<!--</div>-->
+<div class="tab-content">
+    <iframe class="" name="myFrameName" id="mainiframe" scrolling="yes"  frameborder="0" ></iframe>
+</div>
+<style>
+
+
+</style>
 <script>
 
-//    var Logout = function () {
-//
-//        layer.confirm('即将注销相关信息！', { icon: 3, title: '确定要注销吗?' }, function (index) {
-//
-//            //do something
-//            $.ajax({
-//                url: "/Manager/Login/LogOut",
-//                type: "post",
-//                success: function (data) {
-//                    //注销清除缓存
-//                    if (window.sessionStorage)
-//                    {
-//                        window.sessionStorage.clear();
-//                    }
-//                    var url = "/Manager/Login";
-//                    window.location.href = url;
-//                    layer.close(index);
-//                }
-//            });
-//        });
-//    }
-
-
-    // 头部切换
-    jQuery("#navs").slide({ type: "menu", titCell: ".nLi", targetCell: ".sub", effect: "slideDown", delayTime: 300, triggerTime: 0,});
-
-//    $(".openpasswd").click(function() {
-//        layer.open({
-//            type: 2,
-//            title: $(this).html(),
-//            shadeClose: true,
-//            shade: 0.6,
-//            area: [$(this).attr("data-width"), $(this).attr("data-height")],
-//            content: $(this).attr("rel")
-//        });
-//    });
-
-
-//    var sys_goMenuPage = function (url) {
-//        if (url.indexOf("%23") < 0) {
-//            $("#MainContainer").html("");
-//            //layer.load();
-//            this.window.location.href = url;
-//        }
-//    };
-
+    function changeFrameHeights(){
+        var ifms= document.getElementById("mainiframe");
+        ifms.height=document.body.offsetWidth;
+    }
+    window.onresize=function(){ changeFrameHeights();}
+    $(function(){changeFrameHeights();});
 </script>

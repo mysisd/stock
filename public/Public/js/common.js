@@ -2,6 +2,9 @@
  * Created by Administrator on 2018/2/4 0004.
  */
 $(function () {
+    // 头部切换
+   $("#navs").slide({ type: "menu", titCell: ".nLi", targetCell: ".sub", effect: "slideDown", delayTime: 300, triggerTime: 0,});
+
     $('.it').hover( //鼠标滑过导航栏目时
         function(){
             $('.sub').show(); //显示下拉列表
@@ -16,5 +19,9 @@ $(function () {
             $('.sub').show();
         }
     )
+    $('.add-button').click(function () {
+      $('#layui-layer-shade1').show();
+      $('#layui-layer1').show();
+    })
 
 })

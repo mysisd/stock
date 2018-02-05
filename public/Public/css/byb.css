@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#mainiframe{
+    width: 100%;
+
+}
+.de .button {
+    float: right;
+    margin: 0 128px;
+}
+.button {
+    width: 0;
+}
