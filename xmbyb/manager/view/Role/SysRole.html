@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="../xmbyb/view/byb_head.html"></include>
+</head>
+<body style="margin: 130px 20px;">
+<div id="inner-loading" style="display:none;">
+    <div style="height:100%;width:100%; text-align:center; vertical-align:middle; padding-top:70px;padding-bottom:70px;">
+        <img src="/Content/images/loading1.gif"><br>
+        加载中...
+    </div>
+</div>
+
+<div class="con-lr0" id="tradeContent">
+    <script src="/Content/plugins/jqGrid-bootstrap/js/jquery.jqGrid.min.js"></script>
+    <link href="/Content/plugins/jqGrid-bootstrap/css/ui.jqgrid-bootstrap.css" rel="stylesheet">
+    <style>
+        .ui-jqgrid {
+            margin-top: 15px;
+            border-left: none;
+            border-right: none;
+        }
+
+        .ui-jqgrid-labels {
+            background-color: #f0f6fd;
+            border-bottom: #a9d1f3 1px solid;
+        }
+
+        .table-bordered thead tr th, .bordered thead tr th, .table-bordered tbody tr td {
+            border-right: #eee 1px solid;
+        }
+    </style>
+    <div class="sup-tit">
+        <h3>
+            <i class="i8"></i>权限管理
+            <a onclick="Create()"><span class="add-button">新建角色</span></a>
+        </h3>
+        <div>
+            <div class="ui-jqgrid " id="gbox_list" dir="ltr" style="width: 1572px;"><div class="jqgrid-overlay ui-overlay" id="lui_list"></div><div class="ui-jqgrid-view table-responsive" role="grid" id="gview_list" style="width: 1572px;"><div class="ui-jqgrid-titlebar ui-jqgrid-caption" style="display: none;"><a role="link" class="ui-jqgrid-titlebar-close HeaderButton " title="" style="right: 0px;"><span class="ui-jqgrid-headlink glyphicon glyphicon-circle-arrow-up"></span></a><span class="ui-jqgrid-title"></span></div><div class="ui-jqgrid-hdiv" style="width: 1572px;"><div class="ui-jqgrid-hbox"><table class="ui-jqgrid-htable ui-common-table table table-bordered" style="width:1554px" role="presentation" aria-labelledby="gbox_list"><thead><tr class="ui-jqgrid-labels" role="row"><th id="list_id" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_list_id" class="ui-jqgrid-sortable">id<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_role_name" role="columnheader" class="ui-th-column ui-th-ltr" style="width: 389px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_list_role_name" class="ui-jqgrid-sortable">角色名<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_role_describe" role="columnheader" class="ui-th-column ui-th-ltr" style="width: 389px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_list_role_describe" class="ui-jqgrid-sortable">角色描述<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_type" role="columnheader" class="ui-th-column ui-th-ltr" style="width: 389px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_list_type" class="ui-jqgrid-sortable">角色类型<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_role_type" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_list_role_type" class="ui-jqgrid-sortable">role_type<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_parentId" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_list_parentId" class="ui-jqgrid-sortable">parent_id<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_add_time" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_list_add_time" class="ui-jqgrid-sortable">添加时间<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_caozuo" role="columnheader" class="ui-th-column ui-th-ltr" style="width: 387px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_list_caozuo" class="ui-jqgrid-sortable">操作<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_level" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 1px; display: none;"><div id="jqgh_list_level" class="ui-jqgrid-sortable">level<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_parent" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 1px; display: none;"><div id="jqgh_list_parent" class="ui-jqgrid-sortable">parent<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_isLeaf" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 1px; display: none;"><div id="jqgh_list_isLeaf" class="ui-jqgrid-sortable">isLeaf<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_expanded" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 1px; display: none;"><div id="jqgh_list_expanded" class="ui-jqgrid-sortable">expanded<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_loaded" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 1px; display: none;"><div id="jqgh_list_loaded" class="ui-jqgrid-sortable">loaded<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th><th id="list_icon" role="columnheader" class="ui-th-column ui-th-ltr " style="width: 1px; display: none;"><div id="jqgh_list_icon" class="ui-jqgrid-sortable">icon<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-top"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-sort-ltr ui-disabled glyphicon glyphicon-triangle-bottom"></span></span></div></th></tr></thead></table></div></div><div class="ui-jqgrid-bdiv" style="height: 1000px; width: 1572px;"><div style="position:relative;"><div></div><table id="list" tabindex="0" role="presentation" aria-multiselectable="false" aria-labelledby="gbox_list" class="ui-jqgrid-btable ui-common-table table table-bordered" style="width: 1554px;"><tbody><tr class="jqgfirstrow" role="row"><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:389px;"></td><td role="gridcell" style="height:0px;width:389px;"></td><td role="gridcell" style="height:0px;width:389px;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:387px;"></td><td role="gridcell" style="height:0px;width:1px;display:none;"></td><td role="gridcell" style="height:0px;width:1px;display:none;"></td><td role="gridcell" style="height:0px;width:1px;display:none;"></td><td role="gridcell" style="height:0px;width:1px;display:none;"></td><td role="gridcell" style="height:0px;width:1px;display:none;"></td><td role="gridcell" style="height:0px;width:1px;display:none;"></td></tr><tr role="row" id="5" tabindex="-1" class="jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="5" aria-describedby="list_id">5</td><td role="gridcell" style="" title="机构管理人" aria-describedby="list_role_name"><div class="tree-wrap tree-wrap-ltr" style="width:36px;"><div style="left:18px;" class="glyphicon glyphicon-triangle-bottom tree-minus treeclick"></div></div><span class="cell-wrapper">机构管理人</span></td><td role="gridcell" style="" title="机构管理人" aria-describedby="list_role_describe">机构管理人</td><td role="gridcell" style="" title="系统角色" aria-describedby="list_type">系统角色</td><td role="gridcell" style="display:none;" title="1" aria-describedby="list_role_type">1</td><td role="gridcell" style="display:none;" title="4" aria-describedby="list_parentId">4</td><td role="gridcell" style="display:none;" title="" aria-describedby="list_add_time">&nbsp;</td><td role="gridcell" style="" aria-describedby="list_caozuo"></td><td role="gridcell" style="display:none;" title="1" aria-describedby="list_level">1</td><td role="gridcell" style="display:none;" title="4" aria-describedby="list_parent">4</td><td role="gridcell" style="display:none;" title="false" aria-describedby="list_isLeaf">false</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_expanded">true</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_loaded">true</td><td role="gridcell" style="display:none;" title="" aria-describedby="list_icon">&nbsp;</td></tr><tr role="row" id="3" tabindex="-1" class="jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="3" aria-describedby="list_id">3</td><td role="gridcell" style="" title="总资产管理人" aria-describedby="list_role_name"><div class="tree-wrap tree-wrap-ltr" style="width:54px;"><div style="left:36px;" class="glyphicon glyphicon-triangle-bottom tree-minus treeclick"></div></div><span class="cell-wrapper">总资产管理人</span></td><td role="gridcell" style="" title="机构管理员" aria-describedby="list_role_describe">机构管理员</td><td role="gridcell" style="" title="系统角色" aria-describedby="list_type">系统角色</td><td role="gridcell" style="display:none;" title="1" aria-describedby="list_role_type">1</td><td role="gridcell" style="display:none;" title="5" aria-describedby="list_parentId">5</td><td role="gridcell" style="display:none;" title="/Date(1465700030000)/" aria-describedby="list_add_time">/Date(1465700030000)/</td><td role="gridcell" style="" aria-describedby="list_caozuo"></td><td role="gridcell" style="display:none;" title="2" aria-describedby="list_level">2</td><td role="gridcell" style="display:none;" title="5" aria-describedby="list_parent">5</td><td role="gridcell" style="display:none;" title="false" aria-describedby="list_isLeaf">false</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_expanded">true</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_loaded">true</td><td role="gridcell" style="display:none;" title="" aria-describedby="list_icon">&nbsp;</td></tr><tr role="row" id="2" tabindex="-1" class="jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="2" aria-describedby="list_id">2</td><td role="gridcell" style="" title="资产单元管理人" aria-describedby="list_role_name"><div class="tree-wrap tree-wrap-ltr" style="width:72px;"><div style="left:54px;" class="glyphicon glyphicon-triangle-bottom tree-minus treeclick"></div></div><span class="cell-wrapper">资产单元管理人</span></td><td role="gridcell" style="" title="部门管理员" aria-describedby="list_role_describe">部门管理员</td><td role="gridcell" style="" title="系统角色" aria-describedby="list_type">系统角色</td><td role="gridcell" style="display:none;" title="1" aria-describedby="list_role_type">1</td><td role="gridcell" style="display:none;" title="3" aria-describedby="list_parentId">3</td><td role="gridcell" style="display:none;" title="/Date(1464325011000)/" aria-describedby="list_add_time">/Date(1464325011000)/</td><td role="gridcell" style="" aria-describedby="list_caozuo"></td><td role="gridcell" style="display:none;" title="3" aria-describedby="list_level">3</td><td role="gridcell" style="display:none;" title="3" aria-describedby="list_parent">3</td><td role="gridcell" style="display:none;" title="false" aria-describedby="list_isLeaf">false</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_expanded">true</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_loaded">true</td><td role="gridcell" style="display:none;" title="" aria-describedby="list_icon">&nbsp;</td></tr><tr role="row" id="1" tabindex="-1" class="jqgrow ui-row-ltr"><td role="gridcell" style="display:none;" title="1" aria-describedby="list_id">1</td><td role="gridcell" style="" title="投资经理人" aria-describedby="list_role_name"><div class="tree-wrap tree-wrap-ltr" style="width:90px;"><div style="left:72px;" class="glyphicon glyphicon-unchecked tree-leaf treeclick"></div></div><span class="cell-wrapperleaf">投资经理人</span></td><td role="gridcell" style="" title="投资经理人" aria-describedby="list_role_describe">投资经理人</td><td role="gridcell" style="" title="系统角色" aria-describedby="list_type">系统角色</td><td role="gridcell" style="display:none;" title="1" aria-describedby="list_role_type">1</td><td role="gridcell" style="display:none;" title="2" aria-describedby="list_parentId">2</td><td role="gridcell" style="display:none;" title="/Date(1432051200000)/" aria-describedby="list_add_time">/Date(1432051200000)/</td><td role="gridcell" style="" aria-describedby="list_caozuo"></td><td role="gridcell" style="display:none;" title="4" aria-describedby="list_level">4</td><td role="gridcell" style="display:none;" title="2" aria-describedby="list_parent">2</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_isLeaf">true</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_expanded">true</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_loaded">true</td><td role="gridcell" style="display:none;" title="" aria-describedby="list_icon">&nbsp;</td></tr><tr role="row" id="6" tabindex="-1" class="jqgrow ui-row-ltr" aria-selected="false"><td role="gridcell" style="display:none;" title="6" aria-describedby="list_id">6</td><td role="gridcell" style="" title="管理人员" aria-describedby="list_role_name"><div class="tree-wrap tree-wrap-ltr" style="width:54px;"><div style="left:36px;" class="glyphicon glyphicon-triangle-bottom tree-minus treeclick"></div></div><span class="cell-wrapper">管理人员</span></td><td role="gridcell" style="" title="萨德" aria-describedby="list_role_describe">萨德</td><td role="gridcell" style="" title="用户角色" aria-describedby="list_type">用户角色</td><td role="gridcell" style="display:none;" title="2" aria-describedby="list_role_type">2</td><td role="gridcell" style="display:none;" title="5" aria-describedby="list_parentId">5</td><td role="gridcell" style="display:none;" title="/Date(1515979830703)/" aria-describedby="list_add_time">/Date(1515979830703)/</td><td role="gridcell" style="" title="编辑 删除 设置菜单" aria-describedby="list_caozuo"><a onclick="Edit('6')"><button type="button" class="cz-button bg-green">编辑</button></a> <a onclick="Delete('6')"><button type="button" class="cz-button bg-gray">删除</button></a> <a onclick="SetMenu('6')"><button type="button" class="cz-button bg-blue">设置菜单</button></a></td><td role="gridcell" style="display:none;" title="2" aria-describedby="list_level">2</td><td role="gridcell" style="display:none;" title="5" aria-describedby="list_parent">5</td><td role="gridcell" style="display:none;" title="false" aria-describedby="list_isLeaf">false</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_expanded">true</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_loaded">true</td><td role="gridcell" style="display:none;" title="" aria-describedby="list_icon">&nbsp;</td></tr><tr role="row" id="9" tabindex="0" class="jqgrow ui-row-ltr success" aria-selected="true"><td role="gridcell" style="display:none;" title="9" aria-describedby="list_id">9</td><td role="gridcell" style="" title="打" aria-describedby="list_role_name"><div class="tree-wrap tree-wrap-ltr" style="width:72px;"><div style="left:54px;" class="glyphicon glyphicon-unchecked tree-leaf treeclick"></div></div><span class="cell-wrapperleaf">打</span></td><td role="gridcell" style="" title="打" aria-describedby="list_role_describe">打</td><td role="gridcell" style="" title="用户角色" aria-describedby="list_type">用户角色</td><td role="gridcell" style="display:none;" title="2" aria-describedby="list_role_type">2</td><td role="gridcell" style="display:none;" title="6" aria-describedby="list_parentId">6</td><td role="gridcell" style="display:none;" title="/Date(1515984050260)/" aria-describedby="list_add_time">/Date(1515984050260)/</td><td role="gridcell" style="" title="编辑 删除 设置菜单" aria-describedby="list_caozuo"><a onclick="Edit('9')"><button type="button" class="cz-button bg-green">编辑</button></a> <a onclick="Delete('9')"><button type="button" class="cz-button bg-gray">删除</button></a> <a onclick="SetMenu('9')"><button type="button" class="cz-button bg-blue">设置菜单</button></a></td><td role="gridcell" style="display:none;" title="3" aria-describedby="list_level">3</td><td role="gridcell" style="display:none;" title="6" aria-describedby="list_parent">6</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_isLeaf">true</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_expanded">true</td><td role="gridcell" style="display:none;" title="true" aria-describedby="list_loaded">true</td><td role="gridcell" style="display:none;" title="" aria-describedby="list_icon">&nbsp;</td></tr></tbody></table></div></div></div><div class="ui-jqgrid-resize-mark" id="rs_mlist">&nbsp;</div></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $("#list").jqGrid({
+                treeGrid: true,
+                treeGridModel: 'adjacency',
+                ExpandColumn: 'role_name',
+                url: '/Manager/Role/GetList',
+                datatype: 'json',
+                styleUI: 'Bootstrap',
+                width: document.body.clientWidth - 20,
+                mtype: 'GET',
+                colNames: ['id', '角色名', '角色描述', '角色类型', 'role_type', 'parent_id', '添加时间', '操作'],
+                colModel: [
+                    { name: 'id', index: 'id', hidden: true, key: true },
+                    { name: 'role_name', index: 'role_name' },
+                    { name: 'role_describe', index: 'role_describe' },
+                    { name: 'type', index: 'type' },
+                    { name: 'role_type', index: 'role_type', hidden: true },
+                    { name: 'parentId', index: 'parentId', hidden: true },
+                    { name: 'add_time', index: 'add_time', hidden: true },
+                    {
+                        name: 'caozuo', index: 'caozuo',
+                        formatter: function (cellvalue, options, rowObject) {
+
+                    }
+                    }
+                ],
+                height: innerHeight
+            });
+        });
+
+        var Create = function () {
+            var parentid = $("#list").jqGrid("getGridParam", "selrow") ? $("#list").jqGrid("getGridParam", "selrow") : 0
+            layer.open({
+                type: 2,
+                title: "新建角色",
+                shadeClose: true,
+                shade: 0.9,
+                area: ["500px", "350px"],
+                content: "/Manager/Role/Create?parentid=" + parentid
+            });
+        }
+        var Edit = function (id) {
+            layer.open({
+                type: 2,
+                title: "修改角色",
+                shadeClose: true,
+                shade: 0.9,
+                area: ["500px", "350px"],
+                content: "/Manager/Role/Edit?id=" + id
+            });
+        }
+        var Delete = function (id) {
+            layer.confirm("注意：删除角色将删除其关联的所有下级角色，且不可恢复。", {
+                title: "删除角色",
+                icon: 3
+            }, function (index) {
+                $.ajax({
+                    type: "GET",
+                    url: "/Manager/Role/Delete?id=" + id,
+                    success: function (data) {
+                        if (data.RequestResult) {
+                            window.location.reload();
+                            layer.msg("角色已被删除！", { icon: 1 });
+                        }
+                        else {
+                            layer.msg(data.Message, { icon: 2 });
+                        }
+                        layer.close(index);
+                    },
+                    error: function (error) {
+                        layer.msg(error.msg, { icon: 2 });
+                    }
+                });
+            });
+        }
+
+        var SetMenu = function (id) {
+            layer.open({
+                type: 2,
+                title: "设置菜单",
+                shadeClose: true,
+                shade: 0.9,
+                area: ["500px", "600px"],
+                content: "/Manager/Role/SetMenu?id=" + id
+            });
+        }
+
+    </script>
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        if(''=="")
+        {
+            $("#tradeContent").removeClass("con-lr-200").addClass("con-lr0");
+        }
+    })
+</script>
+
+
+
+</body>
+</html>

@@ -14,18 +14,18 @@
                 <span><a id="p1" name="taburl" target='myFrameName' href="/Manager/index/index1">组织机构管理<span class="arrows"></span></a></span>
                 <ul class="sub">
                     <li><a name="taburl" target='myFrameName'  href="/Manager/index/index1">机构信息管理</a></li>
-                    <li><a name="taburl" target='myFrameName'  href="/Manager/index/SysDeptment">部门管理</a></li>
+                    <li><a name="taburl" target='myFrameName'  href="/Manager/index/index1">部门管理</a></li>
                     <li><a name="taburl"  target='myFrameName' href="/Manager/index/SysStation">岗位管理</a></li>
                 </ul>
             </li>
             <li class="nLi">
-                <span><a name="taburl" target='myFrameName' href="/Manager/index/TradeAccount">交易账户管理</a></span>
+                <span><a name="taburl" target='myFrameName' href="/Manager/Trade/trade">交易账户管理</a></span>
             </li>
             <li class="nLi">
-                <span><a name="taburl" target='myFrameName'  href="/Manager/index/SysUser">用户管理</a></span>
+                <span><a name="taburl" target='myFrameName'  href="/Manager/User/SysUser">用户管理</a></span>
             </li>
             <li class="nLi ">
-                <span><a name="taburl" target='myFrameName'  href="/Manager/index/SysRole">权限管理</a></span>
+                <span><a name="taburl" target='myFrameName'  href="/Manager/Role/SysRole">权限管理</a></span>
             </li>
             <div class="fr">
                 <li class="nLi">
@@ -66,7 +66,7 @@
 
     function changeFrameHeights(){
         var ifms= document.getElementById("mainiframe");
-        ifms.height=document.body.offsetWidth;
+        ifms.height=window.screen.availHeight;
     }
     window.onresize=function(){ changeFrameHeights();}
     $(function(){changeFrameHeights();});

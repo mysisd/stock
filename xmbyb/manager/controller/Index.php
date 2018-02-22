@@ -13,6 +13,7 @@ use app\common\helper\Verify;
 use app\manager\model\User as UserModel;
 class Index  extends Controller{
     public function index(){
+
         echo $this->fetch();
     }
     public function verify()
@@ -89,48 +90,7 @@ class Index  extends Controller{
         return json($arr);
 
     }
-   public  function  api51_curl($host,$path,$method,$appcode,$query){
 
-       $headers = array();
-       array_push($headers, "Authorization:APPCODE " . $appcode);
-       $querys = $query;
-       $bodys = "";
-       $url = $host . $path . "?" . $querys;
-       $curl = curl_init();
-       curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
-       curl_setopt($curl, CURLOPT_URL, $url);
-       curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-       curl_setopt($curl, CURLOPT_FAILONERROR, false);
-       curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-       curl_setopt($curl, CURLOPT_HEADER, false);
-       if (1 == strpos("$".$host, "https://"))
-       {
-           curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-           curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-       }
-      $json=curl_exec($curl);
-       $json=json_decode($json, true);
-       $arr=array_keys($json['data']['sort']);
-     for($i=1;$i<count($arr);$i++){
-         $data=array();
-         $res=$arr[$i];
-         $row['sort']=$res;
-         $data=array_combine($json['data']['sort']['fields'],$json['data']['sort']["$res"]);
-         $data['sort']=$res;
-
-        Db('stock')->strict(false)->insert($data);
-
-     }
-
-   }
-    public function ceshi(){
-        $host = "https://stock.api51.cn";
-        $path = "/sort";
-        $method = "GET";
-        $appcode = "f7a39b2b7c2a4fb7b1b6117b9a4022f1 ";
-        $querys = "data_count=100&en_hq_type_code=SS.ESA&fields=fields&sort_field_name=px_change_rate&sort_type=0&start_pos=start_pos";
-        dump($this->api51_curl($host,$path,$method,$appcode,$querys));
-    }
     public function TradeAccount(){
         echo $this->fetch();
     }
@@ -147,11 +107,41 @@ class Index  extends Controller{
         echo $this->fetch();
     }
     public function index1(){
+//        $left = UserModel::left($this->admin);
+//        //var_dump($left['title']);
+//        $this->assign('title',$left['title']);
+//        $this->assign('list',$left['list']);
+        $row= Db('department')->where('del',0)->select();
+        $this->assign('data',$row);
         echo $this->fetch();
     }
+
     public function Create(){
+        if(!empty(input('department_name'))&&!empty(input('describe'))){
+            $data['date']=date('Y-m-d',time());
+            $data['name']=input('department_name');
+            $data['describe']=input('describe');
+            $data['parent_id']=input('parent_id');
+           $row= Db('department')->strict(false)->insert($data);
+            if($row){
+               $arr['res']='success';
+           }else{
+               $arr['res']='error';
+           }
+           return json($arr);
+        }else{
+
+            echo $this->fetch();
+        }
+
+    }
+    public function Edit(){
         echo $this->fetch();
     }
+    
+
+
+
 
 
 }

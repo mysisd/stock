@@ -22,6 +22,42 @@ $(function () {
     $('.add-button').click(function () {
       $('#layui-layer-shade1').show();
       $('#layui-layer1').show();
+
     })
+    $('#cancel').click(function () {
+        $('#close').trigger('click');
+    })
+    $('#layui-layer-shade1').click(function(){
+        $("#layui-layer1").hide();
+        $('#layui-layer-shade1').hide();
+    });
+    $('#close').click(function () {
+        $("#layui-layer1").hide();
+        $('#layui-layer-shade1').hide();
+    })
+    $('#savebt').click(function () {
+        var department_name=$('#department_name').val();
+        var  describe=$('#department_describe').val();
+        var parent_id=$('#parent_id option:selected') .val();//选中的值;
+        if(describe==''||department_name==''){
+            alert('内容不能为空');
+            return false;
+        }
+        $.ajax({
+            url:'/manager/index/Create',
+            type:'post',
+            dataType:'json',
+            data:{'department_name':department_name,'describe':describe,'parent_id':parent_id},
+            success:function (data) {
+                if(data.res=='success'){
+                    alert('添加成功');
+
+                }else if(data.res=='error'){
+                    alert('添加失败');
+                }
+            }
+        })
+    })
+
 
 })

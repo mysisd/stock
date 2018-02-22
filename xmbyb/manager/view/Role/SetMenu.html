@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include file="../xmbyb/view/byb_head.html"></include>
+</head>
+<body class="e-body">
+<div id="inner-loading" style="display:none;">
+    <div style="height:100%;width:100%; text-align:center; vertical-align:middle; padding-top:70px;padding-bottom:70px;">
+        <img src="/Content/images/loading1.gif"><br>
+        加载中...
+    </div>
+</div>
+
+
+<div id="Menu_Tree" class="jstree jstree-1 jstree-default jstree-checkbox-no-clicked jstree-checkbox-selection" role="tree" aria-multiselectable="true" tabindex="0" aria-activedescendant="10" aria-busy="false"><ul class="jstree-container-ul jstree-children" role="group"><li role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="10_anchor" id="10" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="10_anchor"><i class="jstree-icon jstree-checkbox" role="presentation"></i><i class="jstree-icon jstree-themeicon" role="presentation"></i>组织机构管理</a></li></ul></div>
+<div class="de">
+    <div class="button">
+        <button id="saveid" onclick="savemeunset()" class="de-button bg-blue">确定</button>
+        <button type="button" onclick="parent.layer.close(parent.layer.getFrameIndex(window.name))" class="de-button bg-gray">取消</button>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $.get("/Manager/Role/GetMenuTree?role_id=9", function (result) {
+            $("#Menu_Tree").jstree({
+                "checkbox": {
+                    "keep_selected_style": false,
+                    "three_state": false
+                },
+                "plugins": ["checkbox"],
+                'core': {
+                    'multiple': true,
+                    'data': result
+                }
+            });
+        });
+    });
+    var savemeunset = function () {
+        //var nodes1= $("#Menu_Tree").jstree("get_top_selected");
+        var nodes = $("#Menu_Tree").jstree("get_checked");
+        $.post("/Manager/Role/SetMenu", { role_id: 9,menu_id:nodes }, function (result) {
+            if (result.RequestResult) {
+                $("#saveid").button("reset");
+                parent.layer.msg("保存成功", { icon: 1 });
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            } else {
+                $("#saveid").button("reset");
+                parent.layer.msg(result.Message, { icon: 2 });
+                var index = parent.layer.getFrameIndex(window.name);
+                parent.layer.close(index);
+            }
+        });
+    }
+</script>
+
+
+
+
+</body>
+</html>
