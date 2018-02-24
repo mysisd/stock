@@ -53,6 +53,30 @@ class Index  extends Controller{
         }
 
     }
+    public function logins(){
+        session(null);
+
+            $_POST['phone']    = Rsa::privDecrypt($_POST['phone']);
+            $_POST['password'] = Rsa::privDecrypt($_POST['password']);
+
+            $map['account'] = $_POST['phone'];
+            $phone_user   = UserModel::getfind($map);
+            if(!empty($phone_user)){
+                if($phone_user['password'] == sha1($_POST['password'])){
+                    $data['login_time'] =date("Y-m-d H:i:s",time());
+                    UserModel::saves($phone_user['id'],$data);
+                    session('key'   , $phone_user['account']);
+                    session('account'   , $phone_user['account']);
+                    session('uniqid'     , $phone_user['uniqid']);
+                    $arr['res'] = 'success';
+                }else{
+                    $arr['res'] = 'error';
+                }
+            }else{
+                $arr['res']     = null;
+            }
+            return json($arr);
+    }
     public function registers(){
 
         $arr = array();

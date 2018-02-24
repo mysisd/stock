@@ -26,7 +26,7 @@
                 <span class="add-button">添加交易账号</span>
             </a>
         </h3>
-        <form action="/Manager/Trade/trade" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#List" id="form0" method="post" novalidate="novalidate"><input data-val="true" data-val-number="字段 PageIndex 必须是一个数字。" data-val-required="PageIndex 字段是必需的。" id="PageIndex" name="PageIndex" type="hidden" value="1"><input data-val="true" data-val-number="字段 PageSize 必须是一个数字。" data-val-required="PageSize 字段是必需的。" id="PageSize" name="PageSize" type="hidden" value="10">                <div class="searchs">
+        <form action="/Manager/Trade/Lists" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#List" id="form0" method="post" novalidate="novalidate"><input data-val="true" data-val-number="字段 PageIndex 必须是一个数字。" data-val-required="PageIndex 字段是必需的。" id="PageIndex" name="PageIndex" type="hidden" value="1"><input data-val="true" data-val-number="字段 PageSize 必须是一个数字。" data-val-required="PageSize 字段是必需的。" id="PageSize" name="PageSize" type="hidden" value="10">                <div class="searchs">
             <ul>
                 <li>
                     <span>账号名称：</span>
@@ -37,9 +37,9 @@
                 </li>
                 <li>
                     <span>柜台：</span>
-                    <select class="ps-text w2 valid"  data="{:input('param.counter',-1)}" id="counter" name="counter">
-                        <option value="-1">===请选择柜台===</option>
-                        <option value="10">广发恒生UFX正式柜台</option>
+                    <select class="ps-text w2 valid"  data="{:input('param.counter',-1)}"  data-val="true" data-val-number="字段 counter 必须是一个数字。" data-val-required="counter 字段是必需的。" id="counter">
+                        <option selected value="-1">===请选择柜台===</option>
+                        <option value='10'>广发恒生UFX正式柜台</option>
                         <option value="11">银河普通柜台</option>
                         <option value="12">广发恒生UFX测试柜台</option>
                         <option value="13">华鑫普通柜台</option>
@@ -95,7 +95,7 @@
                             <td>{$v.principal}</td>
                             <td>{$v.account_code}</td>
                             <td>{$v.check_code}</td>
-                            <td><if condition="$v.counter eq 10">广发恒生UFX正式柜台 <elseif condition="$v.counter eq 11">银河普通柜台</elseif><elseif condition="$v.counter eq 12">广发恒生UFX测试柜台</elseif><elseif condition="$v.counter eq 13">华鑫普通柜台</elseif><elseif condition="$v.counter eq 14">西南普通柜台</elseif><elseif condition="$v.counter eq 15">招商普通柜台</elseif><elseif condition="$v.counter eq 16">东兴普通柜台</elseif><elseif condition="$v.counter eq 17">长城普通柜台</elseif><elseif condition="$v.counter eq 18">华西普通柜台</elseif><elseif condition="$v.counter eq 19">广发普通柜台</elseif><elseif condition="$v.counter eq 20">海通普通柜台</elseif><elseif condition="$v.counter eq 21">新时代柜台</elseif><elseif condition="$v.counter eq 22">申万宏源普通交易</elseif><elseif condition="$v.counter eq 23">华林证券普通柜台</elseif><elseif condition="$v.counter eq 24">海通融券柜台</elseif><elseif condition="$v.counter eq 25">华福普通柜台</elseif><elseif condition="$v.counter eq 26">中泰普通柜台</elseif><elseif condition="$v.counter eq 27">中信建投信用柜台</elseif><elseif condition="$v.counter eq 28">华融基金柜台</elseif><elseif condition="$v.counter eq 29">东兴证券信用柜台</elseif><elseif condition="$v.counter eq 30">平安证券柜台</elseif><elseif condition="$v.counter eq 31">兴业证券普通柜台</elseif><elseif condition="$v.counter eq 32">华金普通柜台</elseif><elseif condition="$v.counter eq 33">国信信用柜台</elseif><elseif condition="$v.counter eq 34">江海普通柜台</elseif><elseif condition="$v.counter eq 35">兴业信用柜台</elseif><elseif condition="$v.counter eq 36">银泰普通柜台</elseif></if></td>
+                            <td><if condition="$v.counter eq 10">广发恒生UFX正式柜台 <elseif condition="$v.counter eq 11">银河普通柜台</elseif><elseif condition="$v.counter eq 12">广发恒生UFX测试柜台</elseif><elseif condition="$v.counter eq 13">华鑫普通柜台</elseif><elseif condition="$v.counter eq 14">西南普通柜台</elseif><elseif condition="$v.counter eq 15">招商普通柜台</elseif><elseif condition="$v.counter eq 16">东兴普通柜台</elseif><elseif condition="$v.counter eq 17">长城普通柜台</elseif><elseif condition="$v.counter eq 18">华西普通柜台</elseif><elseif condition="$v.counter eq 19">广发普通柜台</elseif><elseif condition="$v.counter eq 20">海通普通柜台</elseif><elseif condition="$v.counter eq 21">新时代柜台</elseif><elseif condition="$v.counter eq 22">申万宏源普通交易</elseif><elseif condition="$v.counter eq 23">华林证券普通柜台</elseif><elseif condition="$v.counter eq 24">海通融券柜台</elseif><elseif condition="$v.counter eq 25">华福普通柜台</elseif><elseif condition="$v.counter eq 26">中泰普通柜台</elseif><elseif condition="$v.counter eq 27">中信建投信用柜台</elseif><elseif condition="$v.counter eq 28">华融基金柜台</elseif><elseif condition="$v.counter eq 29">东兴证券信用柜台</elseif><elseif condition="$v.counter eq 30">平安证券柜台</elseif><elseif condition="$v.counter eq 31">兴业证券普通柜台</elseif><elseif condition="$v.counter eq 32">华金普通柜台</elseif><elseif condition="$v.counter eq 33">国信信用柜台</elseif><elseif condition="$v.counter eq 34">江海普通柜台</elseif><elseif condition="$v.counter eq 35">兴业信用柜台</elseif><elseif condition="$v.counter eq 36">银泰普通柜台</elseif></if> </td>
                             <td>{$v.creator}</td>
                             <td>{$v.create_time}</td>
                             <td>
@@ -217,6 +217,7 @@
         {
             $("#tradeContent").removeClass("con-lr-200").addClass("con-lr0");
         }
+
     })
 </script>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+<include file="../xmbyb/view/byb_head.html"></include>
 </head>
 <body class="e-body">
 <div id="inner-loading" style="display:none;">
@@ -11,7 +11,8 @@
     </div>
 </div>
 
-<form action="/Manager/Trade/create" data-ajax="true" data-ajax-begin="OnBegin" data-ajax-complete="OnComplete" data-ajax-method="Post" data-ajax-success="OnSuccess" id="form0" method="post" novalidate="novalidate"><input data-val="true" data-val-number="字段 trade_orgid 必须是一个数字。" id="trade_orgid" name="trade_orgid" type="hidden" value="13">
+<form action="/Manager/Trade/create" data-ajax="true"data-ajax-begin="OnBegin" data-ajax-complete="OnComplete" data-ajax-method="Post" data-ajax-success="OnSuccess" id="form0" method="post" novalidate="novalidate">
+    <input data-val="true" data-val-number="字段 trade_orgid必须是一个数字。" id="trade_orgid" name="trade_orgid" type="hidden" value="13">
     <div class="edit-box">
         <div class="edit-data">
             <dl>
@@ -232,7 +233,7 @@
         </div>
         <div class="de">
             <div class="button">
-                <button type="submit" id="addsubmint" class="de-button bg-blue" data-loading-text="保存中...">确定</button>
+                <button type="button" id="addsubmint" class="de-button bg-blue" data-loading-text="保存中...">确定</button>
                 <button type="button" class="de-button bg-gray" onclick="parent.layer.close(parent.layer.getFrameIndex(window.name))">取消</button>
             </div>
         </div>
@@ -286,6 +287,29 @@
             parent.layer.msg(data.Message, { icon: 2 });
         }
     }
+    $('#addsubmint').click(function () {
+        var counter_id=$('#counter_id').val();
+        var type=$('#type option:selected').text();
+        var trade_counter_sales_id=$('#trade_counter_sales_id option:selected').text();
+        var account=$('#account').val();
+        var pwd=$('#pwd').val();
+        var compwd=$('#compwd').val();
+        var name=$('#name').val();
+        var account_code=$('#account_code').val();
+        var customer=$('#customer').val();
+        var money=$('#money').val();
+        var status=$('#status option:selected').text();
+        var rate=$('#rate').val();
+        var state_type=$('#state_type option:selected').text();
+        var is_transferfee=$('#is_transferfee option:selected').text();
+        if(counter_id==''||type==''||trade_counter_sales_id==''||account==''||pwd==''||compwd==''||name==''||account_code==''||customer==''||money==''||status==''||rate==''||state_type==''||is_transferfee==''){
+            alert('内容不能为空');
+            return false;
+        }else{
+            $('#form0').submit();
+        }
+
+    })
 
 </script>
 
