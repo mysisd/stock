@@ -3,7 +3,7 @@
 <head>
 <include file="../xmbyb/view/byb_head.html"></include>
 </head>
-<body>
+<body style="margin: 130px 20px">
 <div id="inner-loading" style="display:none;">
     <div style="height:100%;width:100%; text-align:center; vertical-align:middle; padding-top:70px;padding-bottom:70px;">
         <img src="/Content/images/loading1.gif"><br>
@@ -13,7 +13,8 @@
 
 <div class="e-body">
     <div class="edit-box">
-        <form action="/Manager/User/Create" data-ajax="true" data-ajax-begin="onAddBegin" data-ajax-complete="onaddEnd" data-ajax-success="CreateSuccess" id="form0" method="post" novalidate="novalidate">            <div class="edit-data">
+        <form action="/Manager/User/Creates" id="form0" method="post" novalidate="novalidate">
+            <div class="edit-data">
             <input data-val="true" data-val-number="字段 OrgID 必须是一个数字。" data-val-required="OrgID 字段是必需的。" id="OrgID" name="OrgID" type="hidden" value="13">
             <input id="Newroles" name="Newroles" type="hidden" value="">
             <dl>
@@ -170,7 +171,7 @@
         $("#DeptID").change(function () {
             var deptid = $(this).val();
             $.ajax({
-                url: "/Manager/SysUser/GetStaionByDept",
+                url: "/Manager/User/GetStaionByDept",
                 data: { deptid: deptid },
                 type: "POST",
                 dateType: "json",
@@ -216,7 +217,7 @@
         }
         if (name != "") {
             $.ajax({
-                url: "/Manager/SysUser/UserInfoCheck",
+                url: "/Manager/User/UserInfoCheck",
                 data: { field: field, exsit: name, id: 0 },
                 type: "POST",
                 dateType: "json",
@@ -304,7 +305,8 @@
             layer.msg("请选择角色", { icon: 2 });
             return;
         }
-        $("#create_bt").click();
+
+        $("#form0").submit();
     }
 </script>
 

@@ -14,7 +14,6 @@
 <div class="con-lr0" id="tradeContent">
     <div>
 
-
         <div class="tree-panel" id="pannel_OrgTree">
             <div class="tree-title">
                 组织机构<span class="qsfont qsicon-refresh tree_refresh"></span>
@@ -28,7 +27,7 @@
     </div>
     <div class="sup-tit dis-left-280">
         <h3><i class="i17"></i>用户管理
-            <a href="javascript:;" rel="/Manager/User/Create" titl="添加用户" data-width="550px" data-height="740px" onclick="opencreatepage(this)"><span class="add-button">+添加用户</span></a>
+            <a href="/Manager/User/Create" id="add" rel="" title="添加用户" data-width="550px" data-height="740px"><span class="add-button">+添加用户</span></a>
         </h3>
         <!-- 表格 -->
         <div class="searchs">
@@ -432,7 +431,7 @@
                 else {
                     layer.open({
                         type: 2,
-                        title: item.attr("titl"),
+                        title: item.attr("title"),
                         shadeClose: true,
                         shade: 0.9,
                         area: [item.attr("data-width"), item.attr("data-height")],
@@ -527,6 +526,9 @@
 
 </div>
 <script type="text/javascript">
+    $('.add-button').click(function () {
+        $('#add').trigger('click');
+    })
 //    $(function () {
 //        if(''=="")
 //        {
