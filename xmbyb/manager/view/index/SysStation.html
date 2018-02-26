@@ -20,7 +20,25 @@
     组织机构<span class="qsfont qsicon-refresh tree_refresh"></span>
    </div>
    <div class="tree-content">
-    <div id="OrgTree" data-url="/Component/OrgTree/GetTreeModel?isorg=True&amp;isstat=False&amp;assetunit_ids=-1&amp;assetunit_id=0" class="jstree jstree-1 jstree-default" role="tree" tabindex="0" aria-activedescendant="org_13" aria-busy="false"><ul class="jstree-container-ul jstree-children" role="group"><li role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="org_13_anchor" aria-expanded="true" id="org_13" class="jstree-node  jstree-open jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="org_13_anchor"><i class="jstree-icon jstree-themeicon glyphicon glyphicon-home jstree-themeicon-custom" role="presentation"></i>厦门奔一奔</a><ul role="group" class="jstree-children"><li role="treeitem" aria-selected="false" aria-level="2" aria-labelledby="dep_35_anchor" id="dep_35" class="jstree-node  jstree-leaf jstree-last"><i class="jstree-icon jstree-ocl" role="presentation"></i><a class="jstree-anchor" href="#" tabindex="-1" id="dep_35_anchor"><i class="jstree-icon jstree-themeicon glyphicon glyphicon-th-large jstree-themeicon-custom" role="presentation"></i>奔一奔交易部</a></li></ul></li></ul></div>
+    <div id="OrgTree" data-url="/Component/OrgTree/GetTreeModel?isorg=True&amp;isstat=False&amp;assetunit_ids=-1&amp;assetunit_id=0" class="jstree jstree-1 jstree-default" role="tree" tabindex="0" aria-activedescendant="org_13" aria-busy="false">
+     <ul class="jstree-container-ul jstree-children" role="group">
+      <li role="treeitem" aria-selected="false" aria-level="1" aria-labelledby="org_13_anchor" aria-expanded="true" id="org_13" class="jstree-node  jstree-open jstree-last">
+       <i class="jstree-icon jstree-ocl" role="presentation"></i>
+       <a class="jstree-anchor" href="#" tabindex="-1" id="org_13_anchor">
+        <i class="jstree-icon jstree-themeicon glyphicon glyphicon-home jstree-themeicon-custom" role="presentation"></i>厦门奔一奔</a>
+       <ul role="group" class="jstree-children">
+        <foreach name="data" item="v">
+         <li role="treeitem" aria-selected="false" aria-level="2" aria-labelledby="dep_35_anchor" id="dep_35" class="jstree-node  jstree-leaf jstree-last">
+          <i class="jstree-icon jstree-ocl" role="presentation"></i>
+          <a class="jstree-anchor" href="#" tabindex="-1" id="{$v.id}">
+           <i class="jstree-icon jstree-themeicon glyphicon glyphicon-th-large jstree-themeicon-custom" role="presentation"></i>{$v.name}</a>
+         </li>
+
+        </foreach>
+       </ul>
+      </li>
+     </ul>
+    </div>
    </div>
   </div>
 
@@ -28,7 +46,7 @@
  </div>
  <div class="sup-tit dis-left-280">
   <h3><i class="i8"></i>岗位管理
-   <a href="javascript:;" rel="/Manager/index/Create" titl="添加岗位" data-width="550px" data-height="300px" class="showif"><span class="add-button">+添加岗位</span></a>
+   <a href="javascript:;" rel="/Manager/index/Create_job" titl="添加岗位" data-width="550px" data-height="300px" class="showif"><span class="add-button">+添加岗位</span></a>
   </h3>
   <div class="searchs">
 

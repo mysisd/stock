@@ -128,6 +128,8 @@ class Index  extends Controller{
         echo $this->fetch();
     }
     public function SysStation(){
+        $row= Db('department')->where('parent_id',-1)->where('del',0)->select();
+        $this->assign('data',$row);
         echo $this->fetch();
     }
     public function index1(){
@@ -135,7 +137,7 @@ class Index  extends Controller{
 //        //var_dump($left['title']);
 //        $this->assign('title',$left['title']);
 //        $this->assign('list',$left['list']);
-        $row= Db('department')->where('del',0)->select();
+        $row= Db('department')->where('parent_id',-1)->where('del',0)->select();
         $this->assign('data',$row);
         echo $this->fetch();
     }
@@ -158,6 +160,9 @@ class Index  extends Controller{
             echo $this->fetch();
         }
 
+    }
+    public function Create_job(){
+        echo $this->fetch();
     }
     public function Edit(){
         echo $this->fetch();
