@@ -130,6 +130,9 @@ class Index  extends Controller{
     public function SysStation(){
         $row= Db('department')->where('parent_id',-1)->where('del',0)->select();
         $this->assign('data',$row);
+        $id=input('id');
+        $row1= Db('department')->where('id',$id)->where('del',0)->find();
+        $this->assign('data',$row1);
         echo $this->fetch();
     }
     public function index1(){
