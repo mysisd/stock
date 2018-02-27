@@ -30,7 +30,7 @@
         <foreach name="data" item="v">
          <li role="treeitem" aria-selected="false" aria-level="2" aria-labelledby="dep_35_anchor" id="dep_35" class="jstree-node  jstree-leaf jstree-last">
           <i class="jstree-icon jstree-ocl" role="presentation"></i>
-          <a class="jstree-anchor" href="#" tabindex="-1" id="{$v.id}">
+          <a class="jstree-anchor" href="#" tabindex="-1" id="">
            <i class="jstree-icon jstree-themeicon glyphicon glyphicon-th-large jstree-themeicon-custom" role="presentation"></i>{$v.name}</a>
          </li>
 
@@ -46,12 +46,16 @@
  </div>
  <div class="sup-tit dis-left-280">
   <h3><i class="i8"></i>岗位管理
-   <a href="javascript:;" rel="/Manager/index/Create_job" titl="添加岗位" data-width="550px" data-height="300px" class="showif"><span class="add-button">+添加岗位</span></a>
+   <a href="javascript:;" rel="/Manager/index/Create_job?id={$id}" titl="添加岗位" data-width="550px" data-height="300px" class="showif"><span class="add-button">+添加岗位</span></a>
   </h3>
   <div class="searchs">
 
-   <form action="/Manager/index/List" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#list" id="List_submit" method="post" novalidate="novalidate">        <input type="hidden" id="idvalues" name="idvalues">
-    <input data-val="true" data-val-number="字段 SearchLevel 必须是一个数字。" data-val-required="SearchLevel 字段是必需的。" id="SearchLevel" name="SearchLevel" type="hidden" value="2"><input data-val="true" data-val-number="字段 TypeID 必须是一个数字。" data-val-required="TypeID 字段是必需的。" id="TypeID" name="TypeID" type="hidden" value="13"><input data-val="true" data-val-number="字段 PageIndex 必须是一个数字。" data-val-required="PageIndex 字段是必需的。" id="PageIndex" name="PageIndex" type="hidden" value="1"><input data-val="true" data-val-number="字段 PageSize 必须是一个数字。" data-val-required="PageSize 字段是必需的。" id="PageSize" name="PageSize" type="hidden" value="15">        <ul>
+   <form action="/Manager/index/SysStation" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#list" id="List_submit" method="post" novalidate="novalidate">
+    <input type="hidden" id="idvalues" name="idvalues">
+    <input data-val="true" data-val-number="字段 SearchLevel 必须是一个数字。" data-val-required="SearchLevel 字段是必需的。" id="SearchLevel" name="SearchLevel" type="hidden" value="2">
+    <input data-val="true" data-val-number="字段 TypeID 必须是一个数字。" data-val-required="TypeID 字段是必需的。" id="TypeID" name="TypeID" type="hidden" value="{$id}">
+    <input data-val="true" data-val-number="字段 PageIndex 必须是一个数字。" data-val-required="PageIndex 字段是必需的。" id="PageIndex" name="PageIndex" type="hidden" value="1">
+    <input data-val="true" data-val-number="字段 PageSize 必须是一个数字。" data-val-required="PageSize 字段是必需的。" id="PageSize" name="PageSize" type="hidden" value="15">        <ul>
      <li>
       <span>岗位名：</span>
       <input class="text w4" id="StationName" name="StationName" placeholder="请输入岗位名搜索" type="text" value="">
@@ -69,17 +73,19 @@
      <td style="width:17%">创建时间</td>
      <td style="width:12%">操作</td>
     </tr>
+<foreach name="data1" item="v1">
+ <tr class="">
+  <td><if condition="$v1.department_id eq 1">厦门盈透 <elseif condition="$v1.department_id eq 2">防守打法</elseif></if></td>
+  <td>{$v1.station_name}</td>
+  <td>{$v1.create_time}</td>
+  <td>
+   <a href="javascript:;" rel="/Manager/index/Edit?id={$v1.id}" titl="编辑岗位" data-width="500px" data-height="300px" class="showif-user">
+    <button type="button" class="cz-button bg-blue">编辑</button></a>
+   <button type="button" rel="69" onclick="Delete('aUJVMDM1dnhGQVk9')" class="cz-button bg-gray">删除</button>
+  </td>
+ </tr>
+    </foreach>
 
-    <tr class="">
-     <td>奔一奔交易部</td>
-     <td>交易员岗位</td>
-     <td>2017-12-18 16:57:40</td>
-     <td>
-      <a href="javascript:;" rel="/Manager/index/Edit" titl="编辑岗位" data-width="500px" data-height="300px" class="showif-user">
-       <button type="button" class="cz-button bg-blue">编辑</button></a>
-      <button type="button" rel="69" onclick="Delete('aUJVMDM1dnhGQVk9')" class="cz-button bg-gray">删除</button>
-     </td>
-    </tr>
     </tbody></table>
 
    <script type="text/javascript">

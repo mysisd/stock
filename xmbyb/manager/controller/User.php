@@ -40,7 +40,13 @@ class User extends Controller{
        $data['StopTrade']=$StopTrade;
        $data['EntrustNum']=$EntrustNum;
        $data['del']=0;
-       Db('user_management')->strict(false)->insert($data);
+       $row=Db('user_management')->strict(false)->insert($data);
+       if($row){
+           $arr['res']='success';
+       }else{
+           $arr['res']='error';
+       }
+       return json($arr);
 
     }
     public function CheckUserLimit(){

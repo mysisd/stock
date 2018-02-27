@@ -128,12 +128,18 @@ class Index  extends Controller{
         echo $this->fetch();
     }
     public function SysStation(){
+        $StationName=input('StationName');
         $row= Db('department')->where('parent_id',-1)->where('del',0)->select();
         $this->assign('data',$row);
-        $id=input('id');
-        $row1= Db('department')->where('id',$id)->where('del',0)->find();
-        $this->assign('data',$row1);
+        if(!empty($StationName)){
+            $row1=Db('job_management')->where('del',0)->where('department_id',input('TypeID'))->where('station_name',$StationName)->find();
+        }else{
+            $row1=Db('job_management')->where('del',0)->where('department_id',input('id'))->select();
+        }
+        $this->assign('data1',$row1);
+        $this->assign('id',input('id'));
         echo $this->fetch();
+
     }
     public function index1(){
 //        $left = UserModel::left($this->admin);
@@ -165,12 +171,59 @@ class Index  extends Controller{
 
     }
     public function Create_job(){
-        echo $this->fetch();
+        if(!empty(input('department_id'))&&!empty(input('station_name'))){
+            $data['create_time']=date('Y-m-d H:i:s',time());
+            $data['station_name']=input('station_name');
+            $data['department_id']=input('department_id');
+            $row= Db('job_management')->strict(false)->insert($data);
+            if($row){
+                $arr['res']='success';
+            }else{
+                $arr['res']='error';
+            }
+            return json($arr);
+        }else{
+            $id=input('id');
+            $row= Db('department')->where('id',$id)->where('del',0)->find();
+
+            $this->assign('data',$row);
+            echo $this->fetch();
+        }
+
+
+
     }
     public function Edit(){
-        echo $this->fetch();
+        $id=input('id');
+        if(!empty(input('station_name'))){
+            $data['station_name']=input('station_name');
+            $data['create_time']=date('Y-m-d H:i:s',time());
+            $row=Db('job_management')->where('del',0)->where('id',$id)->update($data);
+            if($row){
+                $arr['res']='success';
+            }else{
+                $arr['res']='error';
+            }
+            return json($arr);
+        }else{
+            $row=Db('job_management')->where('del',0)->where('id',$id)->find();
+            $this->assign('data',$row);
+            echo $this->fetch();
+        }
+
     }
-    
+    public function login_out(){
+        session_start();
+        $_SESSION = array(); //清除SESSION值.
+        if(isset($_COOKIE[session_name()])){  //判断客户端的cookie文件是否存在,存在的话将其设置为过期.
+            setcookie(session_name(),'',time()-1,'/');
+        }
+        session_destroy();  //清除服务器的sesion文件
+
+        $this->redirect("/manager/index/login");
+    }
+
+
 
 
 
