@@ -20,8 +20,12 @@
             <dl>
                 <dt>部门选择：</dt>
                 <dd>
-                    <select class="text w2" data-val="true" data-val-number="字段 DeptID 必须是一个数字。" data-val-range="请选择部门" data-val-range-max="2147483647" data-val-range-min="1" data-val-required="DeptID 字段是必需的。" id="DeptID" name="DeptID"><option value="-1">选择部门</option>
-                        <option value="35">奔一奔交易部</option>
+                    <select class="text w2" data-val="true" data-val-number="字段 DeptID 必须是一个数字。" data-val-range="请选择部门" data-val-range-max="2147483647" data-val-range-min="1" data-val-required="DeptID 字段是必需的。" id="DeptID" name="DeptID">
+                        <option value="-1">选择部门</option>
+                        <foreach name="data" item="v">
+                            <option value="{$v.id}">{$v.name}</option>
+                        </foreach>
+
                     </select>
                     <div>
                         <span class="field-validation-valid Validform_checktip" data-valmsg-for="DeptID" data-valmsg-replace="true"></span>
@@ -172,16 +176,15 @@
             var deptid = $(this).val();
             $.ajax({
                 url: "/Manager/User/GetStaionByDept",
-                data: { deptid: deptid },
+                data: { 'deptid': deptid },
                 type: "POST",
                 dateType: "json",
                 success: function (data) {
-                    var list = eval('(' + data.Data + ')');
                     var droList = document.getElementById("StationID");
                     droList.options.length = 0;
-                    for (var i = 0; i < list.length; i++) {
+                    for (var i = 0; i < data.length; i++) {
                         var option = document.createElement('OPTION');
-                        var cur_person = list[i];
+                        var cur_person = data[i];
                         option.text = cur_person.station_name;           //给项赋值
                         option.value = cur_person.id;
                         droList.options.add(option);   //将新项添加到DropDownList

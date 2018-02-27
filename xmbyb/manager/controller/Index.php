@@ -147,7 +147,34 @@ class Index  extends Controller{
 //        $this->assign('title',$left['title']);
 //        $this->assign('list',$left['list']);
         $row= Db('department')->where('parent_id',-1)->where('del',0)->select();
+
         $this->assign('data',$row);
+        $b = [];
+        foreach ($row as $v) {
+            $rows= Db('job_management')->where('department_id',$v['id'])->where('del',0)->select();
+            foreach ($rows as $vo){
+
+                if ($vo['department_id'] == $v['id']) {
+                    $a=Db('job_management')->where('department_id',$vo['department_id'])->where('del',0)->select();
+                    foreach ($a as $vi){
+                        if ($vi['department_id'] == $vo['id']) {
+                            $b[$vo['id']] = [
+                                'department_id' => $vo['department_id'],
+                                'station_name'=>$vo['station_name']
+                            ];
+                        }
+
+                    }
+
+                } else {
+
+                }
+            }
+
+        }
+
+        $b = array_values($b);
+        $this->assign('user',$b);
         echo $this->fetch();
     }
 
@@ -222,10 +249,6 @@ class Index  extends Controller{
 
         $this->redirect("/manager/index/login");
     }
-
-
-
-
 
 
 

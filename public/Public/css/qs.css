@@ -68,3 +68,6 @@ change:active
 .button {
     /*width: 60px;*/
 }
+.jstree .jstree-closed>.jstree-children, .jstree .jstree-leaf>.jstree-children {
+    display: block;
+}

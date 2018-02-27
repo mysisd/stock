@@ -34,7 +34,8 @@
                                         <li role="treeitem" aria-selected="false" aria-level="3" aria-labelledby="sta_69_anchor" id="sta_69" class="jstree-node  jstree-leaf jstree-last">
                                             <i class="jstree-icon jstree-ocl" role="presentation"></i>
                                             <a class="jstree-anchor" href="#" tabindex="-1" id="sta_69_anchor">
-                                                <i class="jstree-icon jstree-themeicon glyphicon glyphicon-user jstree-themeicon-custom" role="presentation"></i>交易员岗位</a></li>
+                                                <i class="jstree-icon jstree-themeicon glyphicon glyphicon-user jstree-themeicon-custom" role="presentation"></i>交易员岗位</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -76,30 +77,32 @@
                     <td style="width:20%">操作</td>
                 </tr>
 
+                    <foreach name="data" item="v">
+                        <tr class="">
+                            <td>xmzyjyy</td>
+                            <td>职业交易员柜台</td>
+                            <td>奔一奔交易部</td>
+                            <td>交易员岗位</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button class="switch-qy" rel="SFRBTDRUV1V5RGM9" onclick="ChangeUserStatus('SFRBTDRUV1V5RGM9',1)">
+                                    <span></span>
+                                </button>
+                            </td>
+                            <td>
+                                <a href="javascript:;" rel="/Manager/User/Edit?userID=SFRBTDRUV1V5RGM9" titl="编辑用户" data-width="500px" data-height="730px" class="showif-user">
+                                    <button type="button" class="cz-button bg-blue">编辑</button>
+                                </a>
+                                <a href="javascript:;" rel="/Manager/User/ResetPwd?userid=SFRBTDRUV1V5RGM9&amp;username=%E8%81%8C%E4%B8%9A%E4%BA%A4%E6%98%93%E5%91%98%E6%9F%9C%E5%8F%B0" titl="重置密码" data-width="500px" data-height="300px" class="showif-user">
+                                    <button type="button" class="cz-button bg-orange">重置密码</button>
+                                </a>
+                                <button type="button" rel="213" onclick="Delete('SFRBTDRUV1V5RGM9')" class="cz-button bg-red">删除</button>
+                            </td>
+                        </tr>
+                    </foreach>
 
-                    <tr class="">
-                    <td>xmzyjyy</td>
-                    <td>职业交易员柜台</td>
-                    <td>奔一奔交易部</td>
-                    <td>交易员岗位</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <button class="switch-qy" rel="SFRBTDRUV1V5RGM9" onclick="ChangeUserStatus('SFRBTDRUV1V5RGM9',1)">
-                            <span></span>
-                        </button>
-                    </td>
-                    <td>
-                        <a href="javascript:;" rel="/Manager/User/Edit?userID=SFRBTDRUV1V5RGM9" titl="编辑用户" data-width="500px" data-height="730px" class="showif-user">
-                            <button type="button" class="cz-button bg-blue">编辑</button>
-                        </a>
-                        <a href="javascript:;" rel="/Manager/User/ResetPwd?userid=SFRBTDRUV1V5RGM9&amp;username=%E8%81%8C%E4%B8%9A%E4%BA%A4%E6%98%93%E5%91%98%E6%9F%9C%E5%8F%B0" titl="重置密码" data-width="500px" data-height="300px" class="showif-user">
-                            <button type="button" class="cz-button bg-orange">重置密码</button>
-                        </a>
-                        <button type="button" rel="213" onclick="Delete('SFRBTDRUV1V5RGM9')" class="cz-button bg-red">删除</button>
-                    </td>
-                </tr>
 
                 </tbody></table>
             <div class="pagination-container"><ul class="pull-right no-margin pagination"><li class="disabled PagedList-pageCountAndLocation"><a>第 1 页 / 共 2 页</a></li><li class="disabled PagedList-skipToFirst"><a>««</a></li><li class="disabled PagedList-skipToPrevious"><a rel="prev">«</a></li><li class="active"><a>1</a></li><li><a onclick="goPageUser(2)">2</a></li><li class="PagedList-skipToNext"><a onclick="goPageUser(2)" rel="next">»</a></li><li class="PagedList-skipToLast"><a onclick="goPageUser(2)">»»</a></li></ul></div>

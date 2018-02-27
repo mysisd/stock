@@ -14,6 +14,8 @@ class User extends Controller{
         echo $this->fetch();
     }
     public function Create(){
+        $data=Db('department')->where('del',0)->select();
+        $this->assign('data',$data);
         echo $this->fetch();
     }
     public function Creates(){
@@ -55,7 +57,11 @@ class User extends Controller{
     public function UserInfoCheck(){
 
     }
-    public function GetStaionByDept(){}
+    public function GetStaionByDept(){
+        $deptid=input('deptid');
+        $data=Db('job_management')->where('department_id',$deptid)->where('del',0)->select();
+        return json($data);
+    }
 
 
 }
