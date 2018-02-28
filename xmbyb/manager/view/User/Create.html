@@ -35,7 +35,8 @@
             <dl>
                 <dt>用户岗位：</dt>
                 <dd>
-                    <select class="text w2" data-val="true" data-val-number="字段 StationID 必须是一个数字。" data-val-range="请选择岗位" data-val-range-max="2147483647" data-val-range-min="1" data-val-required="请选择岗位" id="StationID" name="StationID"><option value="-1">先选择部门</option>
+                    <select class="text w2" data-val="true" data-val-number="字段 StationID 必须是一个数字。" data-val-range="请选择岗位" data-val-range-max="2147483647" data-val-range-min="1" data-val-required="请选择岗位" id="StationID" name="StationID">
+                        <option value="-1">先选择部门</option>
                     </select>
                     <div>
                         <span class="field-validation-valid Validform_checktip" data-valmsg-for="StationID" data-valmsg-replace="true"></span>
@@ -186,7 +187,7 @@
                         var option = document.createElement('OPTION');
                         var cur_person = data[i];
                         option.text = cur_person.station_name;           //给项赋值
-                        option.value = cur_person.id;
+                        option.value = cur_person.station_name;
                         droList.options.add(option);   //将新项添加到DropDownList
                     }
                 },

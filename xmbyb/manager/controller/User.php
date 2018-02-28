@@ -11,6 +11,15 @@ use think\Controller;
 
 class User extends Controller{
     public function SysUser(){
+        $UserName=input('UserName');
+
+        if(!empty($UserName)){
+            $data= Db('user_management')->where('del',0)->where('User_Name',$UserName)->select();
+        }else{
+            $data=Db('user_management')->where('del',0)->select();
+        }
+
+        $this->assign('data',$data);
         echo $this->fetch();
     }
     public function Create(){
@@ -61,6 +70,33 @@ class User extends Controller{
         $deptid=input('deptid');
         $data=Db('job_management')->where('department_id',$deptid)->where('del',0)->select();
         return json($data);
+    }
+    public function ResetPwd(){
+        $id=input('id');
+        if(!empty(input('User_Pwd'))){
+            $User_Pwd_Conf=input('User_Pwd_Conf');
+            if($User_Pwd_Conf==input('User_Pwd')){
+
+                $data['User_Pwd']=$User_Pwd_Conf;
+
+                $row= Db('user_management')->where('del',0)->where('id',input('ID'))->update($data);
+
+                if($row){
+                    $arr['res']='success';
+                }else{
+                    $arr['res']='error';
+                }
+            }else{
+                $arr['res']='null';
+            }
+            return  json($arr);
+
+        }else{
+           $user= Db('user_management')->where('del',0)->where('id',$id)->find();
+            $this->assign('user',$user);
+            echo $this->fetch();
+        }
+
     }
 
 
