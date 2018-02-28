@@ -11,10 +11,12 @@ use think\Controller;
 
 class Role extends Controller{
     public function SysRole(){
+
         echo $this->fetch();
     }
     public function GetList(){
-
+        $data=Db('role')->select();
+        return json($data);
     }
     public function Create(){
         $role_name=input('role_name');

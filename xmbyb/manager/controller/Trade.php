@@ -129,6 +129,12 @@ class Trade extends Controller{
     public function ChangeStatus(){
 
     }
+    public function Edit(){
+       $id=input('id');
+        $data=Db('trading_account')->where('del',0)->where('id',$id)->find();
+        $this->assign('data',$data);
+        echo $this->fetch();
+    }
 
 
 
