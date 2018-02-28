@@ -178,8 +178,8 @@ div.tablediv > .table-bordered {
 	border-top:none; 
 	margin-bottom: 0px
 }
-.ui-jqgrid tr.jqgrow {  
-	outline-style: none; 
+.ui-jqgrid tr.jqgrow {
+	outline-style: none;
 }
 .ui-jqgrid tr.jqgroup {  
 	outline-style: none; 

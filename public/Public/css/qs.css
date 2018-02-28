@@ -71,3 +71,17 @@ change:active
 .jstree .jstree-closed>.jstree-children, .jstree .jstree-leaf>.jstree-children {
     display: block;
 }
+.ui-jqgrid {
+    margin-top: 15px;
+    border-left: none;
+    border-right: none;
+}
+
+.ui-jqgrid-labels {
+    background-color: #f0f6fd;
+    border-bottom: #a9d1f3 1px solid;
+}
+
+.table-bordered thead tr th, .bordered thead tr th, .table-bordered tbody tr td {
+    border-right: #eee 1px solid;
+}

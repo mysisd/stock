@@ -98,6 +98,11 @@ class User extends Controller{
         }
 
     }
-
+        public function Edit(){
+        $id=input('id');
+            $user= Db('user_management')->where('del',0)->where('id',$id)->find();
+            $this->assign('user',$user);
+        echo $this->fetch();
+        }
 
 }
